@@ -1,6 +1,8 @@
 package com.mainacad;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 
@@ -9,7 +11,7 @@ public class Lab
     public static void main( String[] args )
     {
         //Создаём системную переменную которая содержит путь к драйверу
-        System.setProperty("webdriver.chrome.driver","/drivers/chromedriverWin.exe");
+        System.setProperty("webdriver.chrome.driver","src/main/java/com/mainacad/drivers/chromedriver.exe");
 
         //Создаём вебдрайвер
         WebDriver driver = new ChromeDriver();
@@ -18,9 +20,11 @@ public class Lab
         driver.get("https://www.toolsqa.com/automation-practice-form/");
 
         //TODO: Вывести в консоль текст Инфо сообщения
-
+        WebElement e = driver.findElement(By.cssSelector("p:nth-child(3) em "));
+        System.out.println(e.getText());
         //TODO: Вывести в консоль текст заголовка формы ("Practice Automation Form")
-
+        WebElement e1 = driver.findElement(By.cssSelector(".page-title-head h1"));
+        System.out.println(e1.getText());
         //TODO: Кликнуть линк Partial Link Test
 
         //TODO: Заполнить поле First name:
@@ -47,5 +51,6 @@ public class Lab
 
         //TODO: Закрыть браузер
 
+        driver.quit();
     }
 }
